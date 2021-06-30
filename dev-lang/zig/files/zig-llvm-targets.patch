@@ -1,0 +1,133 @@
+diff --git a/cmake/Findllvm.cmake b/cmake/Findllvm.cmake
+index bfde645ca..fb45433d4 100644
+--- a/cmake/Findllvm.cmake
++++ b/cmake/Findllvm.cmake
+@@ -106,23 +106,7 @@ elseif(ZIG_USE_LLVM_CONFIG)
+           message(FATAL_ERROR "LLVM (according to ${LLVM_CONFIG_EXE}) is missing target ${TARGET_NAME}. Zig requires LLVM to be built with all default targets enabled.")
+       endif()
+   endfunction(NEED_TARGET)
+-  NEED_TARGET("AArch64")
+-  NEED_TARGET("AMDGPU")
+-  NEED_TARGET("ARM")
+-  NEED_TARGET("AVR")
+-  NEED_TARGET("BPF")
+-  NEED_TARGET("Hexagon")
+-  NEED_TARGET("Lanai")
+-  NEED_TARGET("Mips")
+-  NEED_TARGET("MSP430")
+-  NEED_TARGET("NVPTX")
+-  NEED_TARGET("PowerPC")
+-  NEED_TARGET("RISCV")
+-  NEED_TARGET("Sparc")
+-  NEED_TARGET("SystemZ")
+-  NEED_TARGET("WebAssembly")
+   NEED_TARGET("X86")
+-  NEED_TARGET("XCore")
+ 
+   if(ZIG_STATIC_LLVM)
+     execute_process(
+diff --git a/src/codegen/llvm/bindings.zig b/src/codegen/llvm/bindings.zig
+index 364b059a8..d4c3e239b 100644
+--- a/src/codegen/llvm/bindings.zig
++++ b/src/codegen/llvm/bindings.zig
+@@ -397,100 +397,22 @@ extern fn LLVMInitializeX86AsmParser() void;
+ 
+ pub const initializeAllTargetInfos = LLVMInitializeAllTargetInfos;
+ fn LLVMInitializeAllTargetInfos() callconv(.C) void {
+-    LLVMInitializeAArch64TargetInfo();
+-    LLVMInitializeAMDGPUTargetInfo();
+-    LLVMInitializeARMTargetInfo();
+-    LLVMInitializeAVRTargetInfo();
+-    LLVMInitializeBPFTargetInfo();
+-    LLVMInitializeHexagonTargetInfo();
+-    LLVMInitializeLanaiTargetInfo();
+-    LLVMInitializeMipsTargetInfo();
+-    LLVMInitializeMSP430TargetInfo();
+-    LLVMInitializeNVPTXTargetInfo();
+-    LLVMInitializePowerPCTargetInfo();
+-    LLVMInitializeRISCVTargetInfo();
+-    LLVMInitializeSparcTargetInfo();
+-    LLVMInitializeSystemZTargetInfo();
+-    LLVMInitializeWebAssemblyTargetInfo();
+     LLVMInitializeX86TargetInfo();
+-    LLVMInitializeXCoreTargetInfo();
+ }
+ pub const initializeAllTargets = LLVMInitializeAllTargets;
+ fn LLVMInitializeAllTargets() callconv(.C) void {
+-    LLVMInitializeAArch64Target();
+-    LLVMInitializeAMDGPUTarget();
+-    LLVMInitializeARMTarget();
+-    LLVMInitializeAVRTarget();
+-    LLVMInitializeBPFTarget();
+-    LLVMInitializeHexagonTarget();
+-    LLVMInitializeLanaiTarget();
+-    LLVMInitializeMipsTarget();
+-    LLVMInitializeMSP430Target();
+-    LLVMInitializeNVPTXTarget();
+-    LLVMInitializePowerPCTarget();
+-    LLVMInitializeRISCVTarget();
+-    LLVMInitializeSparcTarget();
+-    LLVMInitializeSystemZTarget();
+-    LLVMInitializeWebAssemblyTarget();
+     LLVMInitializeX86Target();
+-    LLVMInitializeXCoreTarget();
+ }
+ pub const initializeAllTargetMCs = LLVMInitializeAllTargetMCs;
+ fn LLVMInitializeAllTargetMCs() callconv(.C) void {
+-    LLVMInitializeAArch64TargetMC();
+-    LLVMInitializeAMDGPUTargetMC();
+-    LLVMInitializeARMTargetMC();
+-    LLVMInitializeAVRTargetMC();
+-    LLVMInitializeBPFTargetMC();
+-    LLVMInitializeHexagonTargetMC();
+-    LLVMInitializeLanaiTargetMC();
+-    LLVMInitializeMipsTargetMC();
+-    LLVMInitializeMSP430TargetMC();
+-    LLVMInitializeNVPTXTargetMC();
+-    LLVMInitializePowerPCTargetMC();
+-    LLVMInitializeRISCVTargetMC();
+-    LLVMInitializeSparcTargetMC();
+-    LLVMInitializeSystemZTargetMC();
+-    LLVMInitializeWebAssemblyTargetMC();
+     LLVMInitializeX86TargetMC();
+-    LLVMInitializeXCoreTargetMC();
+ }
+ pub const initializeAllAsmPrinters = LLVMInitializeAllAsmPrinters;
+ fn LLVMInitializeAllAsmPrinters() callconv(.C) void {
+-    LLVMInitializeAArch64AsmPrinter();
+-    LLVMInitializeAMDGPUAsmPrinter();
+-    LLVMInitializeARMAsmPrinter();
+-    LLVMInitializeAVRAsmPrinter();
+-    LLVMInitializeBPFAsmPrinter();
+-    LLVMInitializeHexagonAsmPrinter();
+-    LLVMInitializeLanaiAsmPrinter();
+-    LLVMInitializeMipsAsmPrinter();
+-    LLVMInitializeMSP430AsmPrinter();
+-    LLVMInitializeNVPTXAsmPrinter();
+-    LLVMInitializePowerPCAsmPrinter();
+-    LLVMInitializeRISCVAsmPrinter();
+-    LLVMInitializeSparcAsmPrinter();
+-    LLVMInitializeSystemZAsmPrinter();
+-    LLVMInitializeWebAssemblyAsmPrinter();
+     LLVMInitializeX86AsmPrinter();
+-    LLVMInitializeXCoreAsmPrinter();
+ }
+ pub const initializeAllAsmParsers = LLVMInitializeAllAsmParsers;
+ fn LLVMInitializeAllAsmParsers() callconv(.C) void {
+-    LLVMInitializeAArch64AsmParser();
+-    LLVMInitializeAMDGPUAsmParser();
+-    LLVMInitializeARMAsmParser();
+-    LLVMInitializeAVRAsmParser();
+-    LLVMInitializeBPFAsmParser();
+-    LLVMInitializeHexagonAsmParser();
+-    LLVMInitializeLanaiAsmParser();
+-    LLVMInitializeMipsAsmParser();
+-    LLVMInitializeMSP430AsmParser();
+-    LLVMInitializePowerPCAsmParser();
+-    LLVMInitializeRISCVAsmParser();
+-    LLVMInitializeSparcAsmParser();
+-    LLVMInitializeSystemZAsmParser();
+-    LLVMInitializeWebAssemblyAsmParser();
+     LLVMInitializeX86AsmParser();
+ }
+ 
