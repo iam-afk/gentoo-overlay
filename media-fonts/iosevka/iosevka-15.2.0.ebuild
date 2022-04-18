@@ -7,7 +7,10 @@ inherit font
 
 DESCRIPTION="Slender typeface for code, from code"
 HOMEPAGE="https://be5invis.github.io/Iosevka/"
-SRC_URI="https://github.com/be5invis/Iosevka/releases/download/v${PV}/super-ttc-${P}.zip"
+SRC_URI="
+	https://github.com/be5invis/Iosevka/releases/download/v${PV}/super-ttc-${P}.zip
+	https://github.com/be5invis/Iosevka/releases/download/v${PV}/super-ttc-${PN}-ss12-${PV}.zip
+"
 
 LICENSE="OFL-1.1"
 SLOT="0"
