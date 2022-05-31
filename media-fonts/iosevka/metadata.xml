@@ -5,4 +5,7 @@
 		<email>manzharov@krista.ru</email>
 		<name>Andrey Manzharov</name>
 	</maintainer>
+	<use>
+		<flag name='ss12'>Ubuntu Mono style</flag>
+	</use>
 </pkgmetadata>
