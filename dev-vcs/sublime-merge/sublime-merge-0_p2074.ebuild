@@ -45,7 +45,7 @@ src_install() {
 	# used instead of a symlink to preserve a consistent WM_CLASS regardless of
 	# how the application is launched. This causes the WM_CLASS to be
 	# "sublime_merge" which matches the .desktop entry.
-	make_wrapper sublime_merge "/opt/${MY_PN}/sublime_merge --fwdargv0 \"\$0\""
+	make_wrapper smerge "/opt/${MY_PN}/sublime_merge --fwdargv0 \"\$0\""
 	domenu sublime_merge.desktop
 
 	local size
