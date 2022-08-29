@@ -9,13 +9,11 @@ DESCRIPTION="Slender typeface for code, from code"
 HOMEPAGE="https://be5invis.github.io/Iosevka/"
 SRC_URI="
 	https://github.com/be5invis/Iosevka/releases/download/v${PV}/super-ttc-${P}.zip
-	ss12? ( https://github.com/be5invis/Iosevka/releases/download/v${PV}/super-ttc-${PN}-ss12-${PV}.zip )
 "
 
 LICENSE="OFL-1.1"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
-IUSE="ss12"
 
 BDEPEND="app-arch/unzip"
 
