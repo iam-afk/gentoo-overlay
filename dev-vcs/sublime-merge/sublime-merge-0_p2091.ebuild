@@ -39,7 +39,7 @@ src_install() {
 
 	# sublime_merge looks for /opt/sublime_merge/sublime_merge
 	exeinto /opt/${MY_PN}
-	doexe crash_reporter git-credential-sublime ssh-askpass-sublime sublime_merge
+	doexe crash_handler git-credential-sublime ssh-askpass-sublime sublime_merge
 
 	# sublime-merge sets its WM_CLASS based on its argv[0]. A wrapper script is
 	# used instead of a symlink to preserve a consistent WM_CLASS regardless of
