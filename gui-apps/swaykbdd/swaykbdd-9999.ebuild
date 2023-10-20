@@ -11,7 +11,7 @@ EGIT_REPO_URI="https://github.com/artemsen/swaykbdd.git"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS=""
 
 DEPEND="dev-libs/json-c:0="
 RDEPEND="
