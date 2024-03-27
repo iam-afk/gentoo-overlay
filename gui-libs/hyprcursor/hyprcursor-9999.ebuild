@@ -5,37 +5,26 @@ EAPI=8
 
 inherit cmake
 
-DESCRIPTION="Hyprland cursor format, library and utilities"
+DESCRIPTION="The hyprland cursor format, library and utilities"
 HOMEPAGE="https://github.com/hyprwm/hyprcursor"
 
 if [[ "${PV}" = *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/hyprwm/${PN^}.git"
 else
-	SRC_URI="https://github.com/hyprwm/${PN^}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64"
+	SRC_URI="https://github.com/hyprwm/${PN}/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
+	KEYWORDS="~amd64 ~riscv"
 fi
 
 LICENSE="BSD"
 SLOT="0"
 
-DEPEND="
-	>=dev-libs/hyprlang-0.4.0
+# Disable tests since as per the documentation, tests require a theme to be installed
+# See also https://github.com/hyprwm/hyprcursor/commit/94361fd8a75178b92c4bb24dcd8c7fac8423acf3
+RESTRICT="test"
+RDEPEND="
+	>=dev-libs/hyprlang-0.4.2
 	dev-libs/libzip
-	x11-libs/cairo
 	gnome-base/librsvg:2
+	x11-libs/cairo
 "
-RDEPEND="${DEPEND}"
-BDEPEND=""
-
-src_configure() {
-	local mycmakeargs=(
-		-DCMAKE_BUILD_TYPE:STRING=Release
-	)
-
-	cmake_src_configure
-}
-
-src_install() {
-	cmake_src_install
-}
