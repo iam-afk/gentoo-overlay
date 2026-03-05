@@ -13,7 +13,7 @@ DESCRIPTION="Sublime Merge is a Git client, from the makers of Sublime Text"
 HOMEPAGE="https://www.sublimemerge.com"
 SRC_URI="
 	https://download.sublimetext.com/sublime_merge_build_${MY_PV}_x64.tar.xz"
-S="${WORKDIR}/${MY_PN}"
+S="${WORKDIR}/${MY_PN}-x64-tar"
 
 LICENSE="Sublime"
 SLOT="0"
